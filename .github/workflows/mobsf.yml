@@ -1,0 +1,15 @@
+name: MobSF scan and report analysis
+
+on:
+  push:
+    branches: [ add_actions ]
+  pull_request:
+    branches: [ add_actions ]
+
+jobs:
+  gen_report:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Generate Report via docker-compose
+      run: |
+        echo "Running mobsf docker-compose for report gen..."
