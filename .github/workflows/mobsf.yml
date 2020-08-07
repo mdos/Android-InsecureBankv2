@@ -10,6 +10,8 @@ jobs:
   gen_report:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+
     - name: Get ls on root
       run: echo "$PWD"
       
