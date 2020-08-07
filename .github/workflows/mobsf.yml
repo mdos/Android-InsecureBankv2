@@ -15,6 +15,6 @@ jobs:
       
     - name: Generate MobSF via docker-compose
       run: |
-        docker-compose -f ./docker-compose-sec.yml up --build --exit-code-from scan
+        docker-compose -f docker-compose-sec.yml up --build --exit-code-from scan
       env:
         TARGET_PATH: "./target/InsecureBankv2.apk"
