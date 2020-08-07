@@ -19,8 +19,23 @@ jobs:
       env:
         TARGET_PATH: "./target/InsecureBankv2.apk"
 
+    - name: Upload report to artifact storage
+      uses: actions/upload-artifact@v2
+      with:
+        name: sast-report
+        path: sec/output/report.json
+
+  analyze_report:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Obtain output file from github artifact storage
+      uses: actions/download-artifact@v2
+      with:
+        name: sast-report
+
     - name: Analyze the output file
       run: |
         ls -l $REPORT_PATH
       env:
-        REPORT_PATH: "./sec/output/report.json"
+        REPORT_PATH: "report.json"
+
