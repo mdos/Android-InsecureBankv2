@@ -10,13 +10,17 @@ jobs:
   gen_report:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Grab the code
+      uses: actions/checkout@v2
 
-    - name: Get ls on root
-      run: echo "$PWD"
-      
     - name: Generate MobSF via docker-compose
       run: |
         docker-compose -f docker-compose-sec.yml up --build --exit-code-from scan
       env:
         TARGET_PATH: "./target/InsecureBankv2.apk"
+
+    - name: Analyze the output file
+      run: |
+        ls -l $REPORT_PATH
+      env:
+        REPORT_PATH: "./sec/output/report.json"
