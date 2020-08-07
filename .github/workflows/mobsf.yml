@@ -10,6 +10,8 @@ jobs:
   gen_report:
     runs-on: ubuntu-latest
     steps:
-    - name: Generate Report via docker-compose
+    - name: Generate MobSF via docker-compose
       run: |
-        echo "Running mobsf docker-compose for report gen..."
+        docker-compose -f docker-compose-sec.yml up --build --exit-code-from scan
+      env:
+        TARGET_PATH: "./target/InsecureBankv2.apk"
