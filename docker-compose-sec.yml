@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mobsf:
+    image: opensecurity/mobile-security-framework-mobsf:v3.1.1
+    environment:
+      - MOBSF_API_KEY=12345
+  
+  scan:
+    build:
+      context: ./sec/scan
+    environment:
+      - MOBSF_URL=http://mobsf:8000/
+      - TARGET_PATH=${TARGET_PATH}
+
+    volumes:
+      - "$PWD/sec/output:/app/output"
+      - "$PWD/target:/app/target"
+
+    depends_on:
+      - mobsf

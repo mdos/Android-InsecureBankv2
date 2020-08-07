@@ -68,7 +68,8 @@ instance/
 docs/_build/
 
 # PyBuilder
-target/
+# Messes up the mobsf runs from target dir (apk)
+#target/
 
 # IPython Notebook
 .ipynb_checkpoints

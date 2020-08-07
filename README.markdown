@@ -53,3 +53,10 @@ If you are too impatient to use the application or read the usage guide then fol
 
 4) Use the credentials dinesh/Dinesh@123$ or jack/Jack@123$ and start using the application
 
+# Running SAST scan via github actions
+
+* Manually - 
+`TARGET_PATH=./target/InsecureBankv2.apk docker-compose -f docker-compose-sec.yml up --build --exit-code-from scan`
+
+* For Github Actions related CI run, see `./.github/workflows/mobsf.yml` for details
+
