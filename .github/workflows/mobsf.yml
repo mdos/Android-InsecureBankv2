@@ -10,6 +10,9 @@ jobs:
   gen_report:
     runs-on: ubuntu-latest
     steps:
+    - name: Get ls on root
+      run: ls -l
+      
     - name: Generate MobSF via docker-compose
       run: |
         docker-compose -f docker-compose-sec.yml up --build --exit-code-from scan
